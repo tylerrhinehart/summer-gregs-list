@@ -1,17 +1,17 @@
-function HomeController() {
-    var homeService = new HomeService()
+function JobsController() {
+    var jobsService = new JobsService()
 
-    function drawHomes(homes) {
+    function drawJobs(jobs) {
         var template = ''
-        homes.forEach((home) => {
+        jobs.forEach((job) => {
             template += `
                 <div class="col-xs-12 col-sm-6 col-md-4">
                     <div class="card">
-                        <img class="card-img-top listing-image" src="${home.img}" alt="placeholder image">
+                        <img class="card-img-top listing-image" src="${job.img}" alt="placeholder image">
                         <div class="card-block">
-                            <h4>Description: ${home.description}</h4>
-                            <h4>Sq ft: ${home.sqft}</h4>
-                            <h4>Price: $${home.price}</h4>
+                            <h4>Description: ${job.description}</h4>
+                            <h4>Hours: ${jobs.hours}</h4>
+                            <h4>Price: $${job.salary}</h4>
                         </div>
                     </div>
                 </div>
@@ -20,19 +20,19 @@ function HomeController() {
         document.getElementById('results').innerHTML = template
     }
 
-    this.addHome = function(event){
+    this.addJob = function(event){
         event.preventDefault()
         var form = event.target
 
-        var home = {
+        var job = {
             description: form.description.value,
-            sqft: form.sqft.value,
-            price: form.price.value,
+            hours: form.hours.value,
+            salary: form.salary.value,
             img: form.img.value
         }
 
-        homeService.addHome(home)
-        homeService.getHomes(drawHomes)
+        jobsService.addJob(job)
+        jobsService.getJobs(drawJobs)
         form.reset()
     }
 
@@ -41,15 +41,15 @@ function HomeController() {
         template += `
             <div class="row">
                 <div class="col-xs-12">
-                    <form onsubmit="app.controllers.homeController.addHome(event)">
+                    <form onsubmit="app.controllers.jobsController.addJob(event)">
                         <div class="form-group">
-                            <input type="text" name="description" placeholder="Description" required>
+                            <input type="text" name="description" placeholder="Job description" required>
                         </div>
                         <div class="form-group">
-                            <input type="number" name="sqft" placeholder="Sq ft">
+                            <input type="number" name="hours" placeholder="Weekly Hours">
                         </div>
                         <div class="form-group">
-                            <input type="number" name="price" placeholder="Price">
+                            <input type="number" name="salary" placeholder="Salary">
                         </div>
                         <div class="form-group">
                             <input type="text" name="img" placeholder="image">
@@ -62,6 +62,6 @@ function HomeController() {
         document.getElementById('place-form').innerHTML = template
     }
 
-    // homeService.getHomes(drawHomes)
+    // jobsService.getJobs(drawJobs)
 
 }

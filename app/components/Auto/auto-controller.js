@@ -1,17 +1,17 @@
-function HomeController() {
-    var homeService = new HomeService()
+function AutoController() {
+    var autoService = new AutoService()
 
-    function drawHomes(homes) {
+    function drawAutos(autos) {
         var template = ''
-        homes.forEach((home) => {
+        autos.forEach((auto) => {
             template += `
                 <div class="col-xs-12 col-sm-6 col-md-4">
                     <div class="card">
-                        <img class="card-img-top listing-image" src="${home.img}" alt="placeholder image">
+                        <img class="card-img-top listing-image" src="${auto.img}" alt="placeholder image">
                         <div class="card-block">
-                            <h4>Description: ${home.description}</h4>
-                            <h4>Sq ft: ${home.sqft}</h4>
-                            <h4>Price: $${home.price}</h4>
+                            <h4>Make: ${auto.make}</h4>
+                            <h4>Model: ${auto.model}</h4>
+                            <h4>Price: $${auto.price}</h4>
                         </div>
                     </div>
                 </div>
@@ -20,19 +20,19 @@ function HomeController() {
         document.getElementById('results').innerHTML = template
     }
 
-    this.addHome = function(event){
+    this.addAuto = function(event){
         event.preventDefault()
         var form = event.target
 
-        var home = {
-            description: form.description.value,
-            sqft: form.sqft.value,
+        var auto = {
+            make: form.make.value,
+            model: form.model.value,
             price: form.price.value,
             img: form.img.value
         }
 
-        homeService.addHome(home)
-        homeService.getHomes(drawHomes)
+        autoService.addAuto(auto)
+        autoService.getAutos(drawAutos)
         form.reset()
     }
 
@@ -41,12 +41,12 @@ function HomeController() {
         template += `
             <div class="row">
                 <div class="col-xs-12">
-                    <form onsubmit="app.controllers.homeController.addHome(event)">
+                    <form onsubmit="app.controllers.autoController.addAuto(event)">
                         <div class="form-group">
-                            <input type="text" name="description" placeholder="Description" required>
+                            <input type="text" name="make" placeholder="Make" required>
                         </div>
                         <div class="form-group">
-                            <input type="number" name="sqft" placeholder="Sq ft">
+                            <input type="text" name="model" placeholder="Model">
                         </div>
                         <div class="form-group">
                             <input type="number" name="price" placeholder="Price">
@@ -61,7 +61,5 @@ function HomeController() {
         `
         document.getElementById('place-form').innerHTML = template
     }
-
-    // homeService.getHomes(drawHomes)
 
 }

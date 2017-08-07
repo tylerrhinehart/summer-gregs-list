@@ -21,6 +21,19 @@
         </div>
         <div class="row">
             <div class="col-xs-12">
+                <h3>What are you looking for?</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <button type="button" onclick="app.controllers.homeController.addForm()">Home</button>
+                <button type="button" onclick="app.controllers.autoController.addForm()">Auto</button>
+                <button type="button" onclick="app.controllers.jobsController.addForm()">Jobs</button>
+            </div>
+        </div>
+        <div class="row" id="place-form"></div>
+        <!-- <div class="row">
+            <div class="col-xs-12">
                 <form onsubmit="app.controllers.homeController.addHome(event)">
                     <div class="form-group">
                         <input type="text" name="description" required>
@@ -37,7 +50,7 @@
                     <button type="submit">Add Home</button>
                 </form>
             </div>
-        </div>
+        </div> -->
         <div class="row" id="results">
             <!-- <div class="col-xs-12 col-sm-6 col-md-4 card">
                 <img class="card-img-top" src="//placehold.it/200x200" alt="placeholder image">
@@ -57,6 +70,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
     <script src="app/components/home/home-service.js"></script>
     <script src="app/components/home/home-controller.js"></script>
+    <script src="app/components/Auto/auto-service.js"></script>
+    <script src="app/components/Auto/auto-controller.js"></script>
+    <script src="app/components/Jobs/jobs-service.js"></script>
+    <script src="app/components/Jobs/jobs-controller.js"></script>
     <script src="app/main.js"></script>
 </body>
 
