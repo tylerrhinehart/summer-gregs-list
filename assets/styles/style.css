@@ -1,0 +1,10 @@
+.listing-image {
+    height: 200px;
+    width: 200px;
+}
+
+.card {
+    background-color: darkgrey;
+    margin: 10px;
+    padding: 10px;
+}
