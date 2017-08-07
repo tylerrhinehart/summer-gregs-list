@@ -36,6 +36,11 @@ function JobsController() {
         form.reset()
     }
 
+    this.addButton = function() {
+        var template = '<button type="button" class="btn btn-primary" onclick="app.controllers.jobsController.addForm()">Add New Job</button>'
+        document.getElementById('place-form').innerHTML = template
+    }
+
     this.addForm = function() {
         var template = ''
         template += `
@@ -43,23 +48,24 @@ function JobsController() {
                 <div class="col-xs-12">
                     <form onsubmit="app.controllers.jobsController.addJob(event)">
                         <div class="form-group">
-                            <input type="text" name="description" placeholder="Job description" required>
+                            <input class="form-control" type="text" name="description" placeholder="Job description" required>
                         </div>
                         <div class="form-group">
-                            <input type="number" name="hours" placeholder="Weekly Hours">
+                            <input class="form-control" type="number" name="hours" placeholder="Weekly Hours">
                         </div>
                         <div class="form-group">
-                            <input type="number" name="salary" placeholder="Salary">
+                            <input class="form-control" type="number" name="salary" placeholder="Salary">
                         </div>
                         <div class="form-group">
-                            <input type="text" name="img" placeholder="image">
+                            <input class="form-control" type="text" name="img" placeholder="image">
                         </div>
-                        <button type="submit">Add</button>
+                        <button type="submit" class="btn btn-primary">Add</button>
                     </form>
                 </div>
             </div>
         `
         document.getElementById('place-form').innerHTML = template
+        jobsService.getJobs(drawJobs)
     }
 
     // jobsService.getJobs(drawJobs)

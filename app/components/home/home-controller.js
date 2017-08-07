@@ -36,6 +36,11 @@ function HomeController() {
         form.reset()
     }
 
+    this.addButton = function() {
+        var template = '<button type="button" class="btn btn-primary" onclick="app.controllers.homeController.addForm()">Add New Home</button>'
+        document.getElementById('place-form').innerHTML = template
+    }
+
     this.addForm = function() {
         var template = ''
         template += `
@@ -43,23 +48,24 @@ function HomeController() {
                 <div class="col-xs-12">
                     <form onsubmit="app.controllers.homeController.addHome(event)">
                         <div class="form-group">
-                            <input type="text" name="description" placeholder="Description" required>
+                            <input class="form-control" type="text" name="description" placeholder="Description" required>
                         </div>
                         <div class="form-group">
-                            <input type="number" name="sqft" placeholder="Sq ft">
+                            <input class="form-control" type="number" name="sqft" placeholder="Sq ft">
                         </div>
                         <div class="form-group">
-                            <input type="number" name="price" placeholder="Price">
+                            <input class="form-control" type="number" name="price" placeholder="Price">
                         </div>
                         <div class="form-group">
-                            <input type="text" name="img" placeholder="image">
+                            <input class="form-control" type="text" name="img" placeholder="image">
                         </div>
-                        <button type="submit">Add</button>
+                        <button type="submit" class="btn btn-primary">Add</button>
                     </form>
                 </div>
             </div>
         `
         document.getElementById('place-form').innerHTML = template
+        homeService.getHomes(drawHomes)
     }
 
     // homeService.getHomes(drawHomes)

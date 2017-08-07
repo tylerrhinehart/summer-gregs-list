@@ -15,5 +15,8 @@ function JobsService() {
         saveJobs()
     }
 
+    this.getJobs = function(cb) {
+        cb(jobs)
+    }
 
 }

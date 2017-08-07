@@ -15,5 +15,9 @@ function HomeService() {
         saveHomes()
     }
 
+    this.getHomes = function(cb) {
+        cb(homes)
+    }
+
 
 }

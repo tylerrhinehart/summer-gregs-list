@@ -20,7 +20,7 @@ function AutoController() {
         document.getElementById('results').innerHTML = template
     }
 
-    this.addAuto = function(event){
+    this.addAuto = function (event) {
         event.preventDefault()
         var form = event.target
 
@@ -36,30 +36,36 @@ function AutoController() {
         form.reset()
     }
 
-    this.addForm = function() {
+    this.addButton = function () {
+        var template = '<button type="button" class="btn btn-primary" onclick="app.controllers.autoController.addForm()">Add New Vehicle</button>'
+        document.getElementById('place-form').innerHTML = template
+    }
+
+    this.addForm = function () {
         var template = ''
         template += `
             <div class="row">
                 <div class="col-xs-12">
                     <form onsubmit="app.controllers.autoController.addAuto(event)">
                         <div class="form-group">
-                            <input type="text" name="make" placeholder="Make" required>
+                            <input class="form-control" type="text" name="make" placeholder="Make" required>
                         </div>
                         <div class="form-group">
-                            <input type="text" name="model" placeholder="Model">
+                            <input class="form-control" type="text" name="model" placeholder="Model">
                         </div>
                         <div class="form-group">
-                            <input type="number" name="price" placeholder="Price">
+                            <input class="form-control" type="number" name="price" placeholder="Price">
                         </div>
                         <div class="form-group">
-                            <input type="text" name="img" placeholder="image">
+                            <input class="form-control" type="text" name="img" placeholder="image">
                         </div>
-                        <button type="submit">Add</button>
+                        <button type="submit" class="btn btn-primary">Add</button>
                     </form>
                 </div>
             </div>
         `
         document.getElementById('place-form').innerHTML = template
+        autoService.getAutos(drawAutos)
     }
 
 }

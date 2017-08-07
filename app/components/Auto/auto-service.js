@@ -15,5 +15,8 @@ function AutoService() {
         saveAutos()
     }
 
+    this.getAutos = function(cb) {
+        cb(autos)
+    }
 
 }
